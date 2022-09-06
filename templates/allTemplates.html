@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {%load static%}
+    <link rel="shortcut icon" href="{% static '/images/optimus/favicon-32x32.png' %}" type="image/x-icon"> 
+    <link rel="stylesheet" href="{% static '/css/dashboard.css'%}"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ca2912634d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="sideMenu">
+
+        <div class="toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+         </div>
+
+      <a href="/home">
+        <div class="top-header m-4">
+          <div><img src="{% static '/images/assets/Group 59933.png'%}" alt=""></div>
+          <div><img src="{% static '/images/assets/Group 59932.png'%}" alt=""></div>
+        </div>
+      </a>
+
+       <div class="side-menu-nav p-5">
+
+            <div class="mb-3 side-links" >
+                <a href="/home" class="side-menu-link">
+                  <span><img src="{%  static 'images/assets/note.png'%}" alt="" class="icon"></span>
+                  <span class="link-text">My Templates</span>
+                </a>
+            </div>
+            
+            <div class="mb-3 side-links" >
+               <a href="/home/alltemplates" class="side-menu-link">
+                  <span><img src="{%  static 'images/assets/note.png'%}" alt="" class="icon"></span>
+                  <span class="link-text">All Templates</span>
+               </a>
+            </div>
+
+            <div class="mb-3 side-links">
+                <a  href="/home/portfolio" class="side-menu-link">
+                    <span><img src="{%  static 'images/assets/Group 59834.png'%}" class="icon" alt=""></span>
+                    <span class="link-text">Portfolio</span>
+                </a>
+            </div>
+
+            <div class="mb-3 side-links">
+                <a href="/home/landingpages" class="side-menu-link">
+                    <span><img src="{%  static 'images/assets/Group 59847.png'%}" class="icon" alt=""></span>
+                    <span class="link-text"> Landing Page</span>
+                </a>
+            </div>
+
+            <div class="mb-3 side-links">
+
+               <a href="/home/blogs" class="side-menu-link">
+                    <span><img src="{%  static 'images/assets/data.png'%}" class="icon" alt=""></span>
+                    <span class="link-text" >Blog</span>
+               </a>
+            </div>
+
+         </div>
+      <hr class="line">
+
+      <div class="down-menu-nav px-5">
+        <div class="mb-3 side-links">
+            <a href="/home/support" class="side-menu-link">
+                <span><img src="{%  static 'images/assets/Group 59838.png'%}" class="icon" alt=""></span>
+                <span class="link-text" >Support</span>
+            </a>
+        </div>
+    </div>
+
+       <div class="logout px-5 side-links ">
+            <a href="/logout" class="side-menu-link">
+                <span><img src="{%  static 'images/assets/Group 59846.png'%}" class="icon" alt=""></span>
+                <span class="link-text" >Logout</span>
+            </a>
+        </div>
+      
+      <hr class="line">
+
+    </div>
+
+    <main class="main-container">
+        {% if user.is_authenticated %}
+        <div class="greeting mb-3 text-center pt-5">
+            <h1 class="">Welcome {{ user.name}}</h1>
+        </div>
+        {% else %}
+        <div class="greeting mb-3 text-center pt-5">
+            <h1 class="">Good Afternoon</h1>
+        </div>
+        {%  endif %}
+
+        <p class="text-center top-para">Create Something Magical today from Our Templates </p>
+
+        {% if user.is_superuser %}
+                <a href="{% url 'add_alltemplate' %}" >
+                    <!-- Heroicon name: solid/check -->
+                    <button style="background-color: #0D6EFD; border: none; color: white; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; padding: 10px 22px; border: none; border-radius: 12px;">
+                        Create Template
+                    </button> 
+                </a>
+        {% endif %}
+
+        <div class="templateContainers">
+            {% if templates %}
+                {% for template in templates %}
+                    <div class="template">
+                        <img src="{{ template.thumbnails.url }}" class="temp-image" alt="">
+
+                        <div class="template-text">
+                            <h3>{{ template.name }}</h3>
+                            <a href="/edit/{{ template.id }}" style="text-decoration: none;">
+                                <h3 class="view">Edit Template</h3>
+                                <div class="eye-view"><i class="fa-solid fa-eye"></i></div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </main>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
