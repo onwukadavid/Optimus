@@ -52,25 +52,25 @@
 	position: relative;
 	height: 100%;
 	width:100%;
-	/* background: url(../Images/honeylensimages/Desktop-3.png); */
+	/* background: url("../Images/honeylensimages/Desktop-3.68c93ca61271.png"); */
 	background-size: 100% 100%;
 	background-position: center;
 	background-attachment: fixed;
 }
 #honeyLensCarousel .carousel-inner .carousel-item:nth-child(2){
-	/* background: url(../Images/honeylensimages/Property1=Variant2.png); */
+	/* background: url("../Images/honeylensimages/Property1=Variant2.c5c5826a45a5.png"); */
 	background-size: 100% 100%;
 	background-position: center;
 	background-attachment: fixed;
 }
 #honeyLensCarousel .carousel-inner .carousel-item:nth-child(3){
-	/* background: url(../Images/honeylensimages/Property1=Variant3.png); */
+	/* background: url("../Images/honeylensimages/Property1=Variant3.14a75e227415.png"); */
 	background-size: 100% 100%;
 	background-position: center;
 	background-attachment: fixed;
 }
 #honeyLensCarousel .carousel-inner .carousel-item:nth-child(4){
-	/* background: url(../Images/honeylensimages/Property1=Variant4.png); */
+	/* background: url("../Images/honeylensimages/Property1=Variant4.1deb938b239c.png"); */
 	background-size: 100% 100%;
 	background-position: center;
 	background-attachment: fixed;
