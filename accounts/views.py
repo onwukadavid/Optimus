@@ -30,7 +30,7 @@ def logout_view(request):
 @login_required(login_url='/login/')
 def home(request):
   # return render(request, 'allTemplates.html')
-  usertemplates = UserTemplate.objects.all().filter(created_by=request.user)
+  usertemplates = UserTemplate.objects.all().filter(created_by=request.user).order_by('-created_at')
   return render(request, 'myTemplates.html', {"usertemplates":usertemplates})
 
 @login_required(login_url='/login/')

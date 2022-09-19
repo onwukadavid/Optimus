@@ -57,8 +57,24 @@
     <div class="panel__basic-actions"></div>
     <div class="panel__devices"></div>
     <div class="panel__switcher flex justify-center">
-        <form onsubmit="saveContent(event)">
+        <form class="d-flex" onsubmit="saveContent(event)">
           {% csrf_token %}
+
+          <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Name"
+            id="name"
+            aria-label="Search"
+          />
+          <input
+            class="form-control"
+            type="file"
+            placeholder="image"
+            id="image"
+            accept="image/*"
+            aria-label="image"
+          />
           <button class="py-0.5 px-3 rounded text-white btn bg-blue-500 hover:bg-blue-600 mr-2" type="submit">Save</button>
         </form>
     </div>
@@ -401,25 +417,31 @@
     {
       e.preventDefault()
       console.log(editor.getHtml(), editor.getCss());
+      console.log($('#image')[0].files[0])
       const id = "{{ template.id }}"
       const formData = new FormData()
+      formData.append('name', document.getElementById('name').value)
       formData.append('html', editor.getHtml());
       formData.append('css', editor.getCss());
+      formData.append('thumbnails', $('#image')[0].files[0])
+      formData.append('action', 'create-template')
       const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      formData.append('csrfmiddlewaretoken', csrftoken)
       const url = id ? `/editTemplate/${id}` : 'template/create' //helps create user templates from all templates
-      const request = new Request(
-            url, //template replacing page  'template/create' helps create user templates from new or add
-            {
-                method: 'POST',
-                headers: {'X-CSRFToken': csrftoken},
-                mode: 'same-origin',  // Do not send CSRF token to another domain.
-                body: formData
+      $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            enctype: "multipart/form-data",
+            success: function(){
+              alert('The Template has been created')
+            },
+            error: function(xhr, errmsg, err){
+              console.log(xhr.status + ":" + xhr.responseText)
             }
-        );
-        fetch(request).then((resp)=>resp.json()).then((response)=>{
-          console.log(response)
-        }).catch((error)=>{
-          console.log(error)
         })
       }
 </script>

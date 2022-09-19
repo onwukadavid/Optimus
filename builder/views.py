@@ -10,9 +10,6 @@ def templates(request):
     return render(request, 'allTemplates.html', {"templates":templates})
 
 
-# def addTemplate(request):
-#     return render(request, 'newtemplate.html')
-
 #CREATE USER TEMPLATE FROM PRE-EXISTING ALL TEMPLATES
 def editTemplate(request, id):
     template = Template.objects.get(pk=id)
@@ -20,31 +17,36 @@ def editTemplate(request, id):
 
 def editTemplateContent(request, id):
     if(request.method=='POST'):
-        html = request.POST['html']
-        css = request.POST['css']
+        html = request.POST.get('html')
+        css = request.POST.get('css')
+        name = request.POST.get('name')
+        thumbnails = request.FILES.get('thumbnails')
         usertemplate = UserTemplate.objects.create(
-            name='untitled', 
+            name=name, 
             html=html, 
             css=css,
+            thumbnails=thumbnails,
             created_by = request.user
         )
         usertemplate.save()
-    #return JsonResponse({ "result" : (json.loads(serialize('json', [usertemplate])))[0]})
-    return redirect('home')
+    return JsonResponse({ "result" : (json.loads(serialize('json', [usertemplate])))[0]})
+    
 
 def saveTemplate(request):
     if(request.method=='POST'):
         html = request.POST['html']
         css = request.POST['css']
+        name = request.POST.get('name')
+        thumbnails = request.FILES.get('thumbnails')
         usertemplate = UserTemplate.objects.create(
-            name='untitled', 
+            name=name, 
             html=html, 
             css=css,
+            thumbnails=thumbnails,
             created_by = request.user
         )
         usertemplate.save()
-    #return JsonResponse({ "result" : (json.loads(serialize('json', [usertemplate])))[0]})
-    return redirect('home')
+    return JsonResponse({ "result" : (json.loads(serialize('json', [usertemplate])))[0]})
 
 
 #USER TEMPLATE
@@ -60,8 +62,8 @@ def edit_userTemplates(request, id):
 
 def edit_userTemplateContent(request, id):
     if(request.method=='POST'):
-        html = request.POST['html']
-        css = request.POST['css']
+        html = request.POST.get('html')
+        css = request.POST.get('css')
         usertemplate = UserTemplate.objects.get(pk=id)
         usertemplate.html = html
         usertemplate.css = css
@@ -69,13 +71,18 @@ def edit_userTemplateContent(request, id):
     return JsonResponse({ "result" : (json.loads(serialize('json', [usertemplate])))[0]})
 
 def saveUserTemplate(request):
-    if(request.method=='POST'):
+    if request.POST.get('action') == 'create-user-template':
+        html = request.POST.get('html')
+        css = request.POST.get('css')
+        name = request.POST.get('name')
+        thumbnails = request.FILES.get('thumbnails')
         html = request.POST['html']
         css = request.POST['css']
         usertemplate = UserTemplate.objects.create(
-            name="untitled", 
+            name=name, 
             html=html, 
             css=css,
+            thumbnails=thumbnails,
             created_by = request.user
         )
         usertemplate.save()
@@ -84,16 +91,24 @@ def saveUserTemplate(request):
 
 #ALL TEMPLATES
 def add_allTemplate(request):
-    return render(request, 'new_all_template.html')
+    return render(request, 'new_all_template.html',)
 
 
 def save_allTemplate(request):
-    if(request.method=='POST'):
-        html = request.POST['html']
-        css = request.POST['css']
-        template = Template.objects.create(name='untitled', html=html, css=css)
+    if request.POST.get('action') == 'create-alltemplate':
+        html = request.POST.get('html')
+        css = request.POST.get('css')
+        name = request.POST.get('name')
+        thumbnails = request.FILES.get('thumbnails')
+        template = Template.objects.create(
+            name=name, 
+            html=html, 
+            css=css,
+            thumbnails = thumbnails
+        )
         template.save()
-    return JsonResponse({ "result" : (json.loads(serialize('json', [template])))[0]})
+        
+        return JsonResponse({ "result" : (json.loads(serialize('json', [template])))[0]})
 
 
 #PREVIEW TEMPLATE IN WEB BROWSER
