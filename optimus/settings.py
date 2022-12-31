@@ -180,3 +180,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 LOGIN_REDIRECT_URL = '/home'
 
 LOGOUT_REDIRECT_URL = '/login'
+
+CSRF_TRUSTED_ORIGINS = ['https://optimus.up.railway.app']
+
+CORS_ORIGIN_WHITELIST = [
+    'https://optimus.up.railway.app',
+]
