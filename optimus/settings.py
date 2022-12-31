@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config, Csv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-ood16z3x7kracv(d()fqo%v1f9feglt&5+yzrhyyl+dgq2!ho=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['optimus.up.railway.app']
 
 
 # Application definition
@@ -93,10 +95,15 @@ AUTH_USER_MODEL = 'accounts.User'
 
 #FOR DEVELOPMENT
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
+        'default': dj_database_url.config(
+            default = config('DATABASE_URL'),
+            conn_max_age=1800,
+        ),
 
         #  'default': {  
     #     'ENGINE': 'django.db.backends.mysql',  
