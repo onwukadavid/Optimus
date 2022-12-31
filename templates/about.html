@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimus | About</title>
     {% load static %}
-    <link rel="shortcut icon" href="{% static '/images/optimus/favicon-32x32.png' %}" type="image/x-icon"> 
-    <link rel="stylesheet" href="{% static '/css/about.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/optimus/favicon-32x32.png' %}" type="image/x-icon"> 
+    <link rel="stylesheet" href="{% static 'css/about.cs'%}">
     <script src="https://kit.fontawesome.com/ca2912634d.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .about-hero {
-            background: url("{% static '/images/optimus/Frame 60387 (1).png' %}") no-repeat center center/cover;
+            background: url("{% static 'images/optimus/Frame 60387 (1).png' %}") no-repeat center center/cover;
         }
     </style>
 </head>
@@ -21,7 +21,7 @@
     <div class="container">
         <nav class="navbar">
           <div class="logo">
-            <a href="/index"><img src="{% static '/images/optimus/Frame 60200.png' %}" alt="optimus logo" width="155px"></a>
+            <a href="/index"><img src="{% static 'images/optimus/Frame 60200.png' %}" alt="optimus logo" width="155px"></a>
           </div>
     
           <div class="links">
@@ -31,7 +31,7 @@
                 <li><a href="/home/support">Support</a></li>
                 <li>
                   <a href="/home" class="d-flex flex-row justify-center align-items-center">
-                    <img src="{% static '/images/optimus/user-interface.png' %}" alt="" width="30px">
+                    <img src="{% static 'images/optimus/user-interface.png' %}" alt="" width="30px">
                     <span class="px-2">{{ user.name }}</span>
                   </a>
                 </li>
@@ -72,7 +72,7 @@
 
         <div class="mission-grid">
             <div data-aos="zoom-out-up">
-                <img class="mission-img" src="{% static "\Images\optimus\help-clients.png" %}" alt="">
+                <img class="mission-img" src="{% static 'images/optimus/help-clients.png'%}" alt="">
             </div>
         
             <div>
@@ -96,7 +96,7 @@
 
             <div data-aos="fade-up">
                 <div class="team-img" >
-                    <img src="{% static "\Images\optimus\Frame 60375.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375.png'%}" alt="">
                 </div>
 
                 <div class="name">Lake Mark</div>
@@ -105,7 +105,7 @@
 
              <div data-aos="fade-down">
                 <div class="team-img">
-                    <img src="{%static "\Images\optimus\Frame 60375-1.png" %}" alt="">
+                    <img src="{%static 'images/optimus/Frame 60375-1.png' %}" alt="">
                 </div>
 
                 <div class="name">Stacy Brooke</div>
@@ -114,7 +114,7 @@
 
             <div data-aos="fade-right">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-2.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-2.png' %}" alt="">
                 </div>
 
                 <div class="name">Joan Mercy</div>
@@ -123,7 +123,7 @@
 
             <div data-aos="fade-left">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-3.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-3.png' %}" alt="">
                 </div>
 
                 <div class="name">Mike Scholes</div>
@@ -132,7 +132,7 @@
 
             <div data-aos="fade-up">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-4.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-4.png' %}" alt="">
                 </div>
 
                 <div class="name">Greg Gates</div>
@@ -141,7 +141,7 @@
 
             <div data-aos="fade-right">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-5.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-5.png' %}" alt="">
                 </div>
 
                 <div class="name">Austine Cain</div>
@@ -150,7 +150,7 @@
 
             <div data-aos="fade-up">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-6.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-6.png' %}" alt="">
                 </div>
 
                 <div class="name">Tosin Clarke</div>
@@ -159,7 +159,7 @@
 
             <div data-aos="fade-left">
                 <div class="team-img">
-                    <img src="{% static "\Images\optimus\Frame 60375-7.png" %}" alt="">
+                    <img src="{% static 'images/optimus/Frame 60375-7.png' %}" alt="">
                 </div>
 
                 <div class="name">Promise Eddie</div>
@@ -186,7 +186,7 @@
             </div>
 
             <div data-aos="fade-up">
-                <img src="{% static "\Images\optimus\Frame 60312.png" %}" alt="" class="bottom-img">
+                <img src="{% static 'images/optimus/Frame 60312.png'%}" alt="" class="bottom-img">
             </div>
         </div>
 
@@ -240,6 +240,6 @@
       <script>
         AOS.init();
       </script>
-      <script src="{% static "js/script.js" %}"></script>
+      <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
