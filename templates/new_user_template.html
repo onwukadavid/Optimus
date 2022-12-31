@@ -449,7 +449,7 @@
       formData.append('action', 'create-user-template')
       const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
       formData.append('csrfmiddlewaretoken', csrftoken)
-      const url = id ? `/editMyTemplateContent/${id}` : 'userTemplate/create' //helps create user templates from all templates
+      const url = id ? `/editMyTemplateContent/${id}` : 'userTemplate/create' //helps create new user templates
       $.ajax({
             type: 'POST',
             url: url,
