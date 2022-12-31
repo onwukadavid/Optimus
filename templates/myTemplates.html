@@ -111,8 +111,8 @@
           {% if usertemplates %}
             {% for usertemplate in usertemplates %}
               <div class="template">
-                {% if usertemplate.thumbnails == "none" %}
-                  <img src="{% static '/images/default/Default2.png' %}" alt="">
+                {% if usertemplate.thumbnails == "" %}
+                  <img src="{% static 'images/default/Default2.png' %}" alt="">
                 {% else %}
                   <img src="{{ usertemplate.thumbnails.url }}" alt="">
                 {% endif %}

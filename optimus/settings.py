@@ -80,24 +80,36 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd6ke04vkivvejp',
-        'USER': 'joqmgdogxlypyz',
-        'PASSWORD': 'f7441ffb47fc8305a84d0fad0ec39b09c7717033a1464ae2eba53661fd6e4e62',
-        'HOST': 'ec2-52-19-188-149.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432'
-    }
-}
-
-#FOR DEVELOPMENT
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd6ke04vkivvejp',
+#         'USER': 'joqmgdogxlypyz',
+#         'PASSWORD': 'f7441ffb47fc8305a84d0fad0ec39b09c7717033a1464ae2eba53661fd6e4e62',
+#         'HOST': 'ec2-52-19-188-149.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432'
 #     }
 # }
+
+#FOR DEVELOPMENT
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+
+        #  'default': {  
+    #     'ENGINE': 'django.db.backends.mysql',  
+    #     'NAME': config('DB_NAME'),  
+    #     'USER': config('DB_USER'),  
+    #     'PASSWORD': config('DB_PASSWORD'),  
+    #     'HOST': config('DB_HOST'),  
+    #     'PORT': config('PORT_NUMBER'),  
+    #     'OPTIONS': {  
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+    #     }  
+    # }  
+}
 
 
 # Password validation
@@ -128,7 +140,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
 USE_TZ = True
 
